@@ -37,11 +37,11 @@ $category = Session::get('category')
 					<div class="price">
 					
 					@if (!$product->reduced_price)
-					<p>Price: <span>{{ $product->price }}</span></p>
+					<p>Price: <span>${{ $product->price }}</span></p>
 					@endif
 					@if ($product->reduced_price)
-						<p>Price: <span style="text-decoration: line-through;">{{ $product->price }}</span></p>
-						<p>New Price: <span>{{ $product->reduced_price }}</span></p>
+						<p>Price: <span style="text-decoration: line-through;">${{ $product->price }}</span></p>
+						<p>New Price: <span>${{ $product->reduced_price }}</span></p>
 					@endif
 					<div class="add-cart">								
 								<h4><a href="preview.php">Add to Cart</a></h4>

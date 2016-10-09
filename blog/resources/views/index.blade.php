@@ -6,6 +6,7 @@ $mainCategory = Session::get('mainCategory');
 $category = Session::get('category')
 ?> 
 
+
 @endsection
 
 </body>

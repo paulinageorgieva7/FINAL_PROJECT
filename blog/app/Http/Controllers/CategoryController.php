@@ -26,6 +26,25 @@ class CategoryController extends Controller
     	return view('show', ['product' => $product]);
     	
     }
+    
+    public function orderByLowest($category_id)
+    {
+    	$product = DB::table('product')
+    		->where('category_id', '=', $category_id)
+    		->orderBy('price', 'asc')
+    		->get();
+    	return view('show', ['product' => $product]);
+    }
+    
+    public function orderByHighest($category_id)
+    {
+    	$product = DB::table('product')
+    		->where('category_id', '=', $category_id)
+    		->orderBy('price', 'desc')
+    		->get();
+    		var_dump(Route::currentRouteName());
+    	return view('show', ['product' => $product]);
+    }
 
 	
 }
