@@ -11,21 +11,32 @@ $category = Session::get('category');
 <div class="main">
     <div class="content">
     
+    @if (!isset($query))
    	 <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Sort By
-                    <span class="caret"></span></button>
-                <ul class="dropdown-menu">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Sort By
+        <span class="caret"></span></button>
                 
-               	    <li><a href="{{ route('category.lowest', $category_DB[0]->category_id) }}">Price Lowest</a></li>
-                    <li><a href="highest"> Price Highest</a></li>
-               
-                </ul>
-            </div>
-            
+        <ul class="dropdown-menu">               
+             <li><a href="{{ route('category.lowest', $category_DB[0]->category_id) }}">Price Lowest</a></li>
+             <li><a href="{{ route('category.highest', $category_DB[0]->category_id) }}"> Price Highest</a></li>              
+        </ul>
+     </div>
+     @endif       
 	      <div class="section group">
-	      
-	      
+	  
+	 <div>
+		@if(isset($query))
+		 	@if(count($product) == 0)
+		 		{{ 'No search results found!' }}
+		 	@else
+		 		{{ 'Search results for: ' . $query}}
+		 	@endif 	
+		 @endif
+	 </div>
+	 	
+	 	    
 	      @foreach ($product as $product)
+
 				<div class="grid_1_of_4 images_1_of_4">
 				
 					 <a href="{{ url('product', $product->product_id) }}"><img src="images/{{ $product->product_image }}" alt="{{ $product->product_name }}" /></a>

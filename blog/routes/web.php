@@ -34,8 +34,13 @@
         'as'   => 'category.lowest',
     ]);
 	
-	    Route::get('category/{category_id}/highest', [
-        'uses' => '\App\Http\Controllers\CategoryController@orderByHighest',
+	Route::get('category/{category_id}/highest', [
+     	'uses' => '\App\Http\Controllers\CategoryController@orderByHighest',
         'as'   => 'category.highest',
     ]);
+	    
+	Route::post('/search', [
+	    'uses' => '\App\Http\Controllers\SearchController@search',
+	    'as'   => 'queries.search',
+	]);
 	

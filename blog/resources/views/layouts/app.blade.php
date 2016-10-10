@@ -138,8 +138,11 @@
      			</ul>
 	     	</div>
 	     	<div class="search_box">
-	     		<form>
-	     			<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
+	     		<form role="form" method="POST" action="{{ url('/search') }}" >
+	     		 {{ csrf_field() }}
+	     		 
+	     			<input type="text" name="search" placeholder="Search" value="{{ $query }}" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+	     			<input type="submit" value="">
 	     		</form>
 	     	</div>
 	     	<div class="clear"></div>
