@@ -23,7 +23,10 @@ class CategoryController extends Controller
     public function show($category_id)
     {
     	$product = DB::table('product')->where('category_id', '=', $category_id)->get();
-    	return view('show', ['product' => $product]);
+    	
+    	$category_id_DB = DB::table('category')->where('category_id', '=', $category_id)->get();
+    	
+    	return view('show', ['product' => $product, 'category_DB' => $category_id_DB]);
     	
     }
     
@@ -33,7 +36,10 @@ class CategoryController extends Controller
     		->where('category_id', '=', $category_id)
     		->orderBy('price', 'asc')
     		->get();
-    	return view('show', ['product' => $product]);
+    	
+    	$category_id_DB = DB::table('category')->where('category_id', '=', $category_id)->get();
+    	
+    	return view('show', ['product' => $product, 'category_DB' => $category_id_DB]);
     }
     
     public function orderByHighest($category_id)
@@ -42,8 +48,10 @@ class CategoryController extends Controller
     		->where('category_id', '=', $category_id)
     		->orderBy('price', 'desc')
     		->get();
-    		var_dump(Route::currentRouteName());
-    	return view('show', ['product' => $product]);
+		
+    	$category_id_DB = DB::table('category')->where('category_id', '=', $category_id)->get();
+    		 
+    	return view('show', ['product' => $product, 'category_DB' => $category_id_DB]);
     }
 
 	

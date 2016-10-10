@@ -29,7 +29,13 @@
 	
 	Route::get('product/{product_id}', 'ProductController@show');
 	
-	Route::get('category/{category_id}/lowest', 'CategoryController@orderByLowest');
+    Route::get('category/{category_id}/lowest', [
+        'uses' => '\App\Http\Controllers\CategoryController@orderByLowest',
+        'as'   => 'category.lowest',
+    ]);
 	
-	Route::get('category/{category_id}/highest', 'CategoryController@orderByHighest');
+	    Route::get('category/{category_id}/highest', [
+        'uses' => '\App\Http\Controllers\CategoryController@orderByHighest',
+        'as'   => 'category.highest',
+    ]);
 	

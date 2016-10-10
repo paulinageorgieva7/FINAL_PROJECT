@@ -11,7 +11,7 @@ class Category extends Model
 	
 	protected $fillable = ['category'];
 	
-/* 	public function parent() {
+ 	public function parent() {
 		return $this->belongsTo('App\Category', 'main_category');
 	}
 	
@@ -21,5 +21,5 @@ class Category extends Model
 	
  	public function product() {
         return $this->hasMany('App\Product', 'id');
-    } */
+    }
 }

@@ -15,8 +15,8 @@ $category = Session::get('category');
                 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Sort By
                     <span class="caret"></span></button>
                 <ul class="dropdown-menu">
-               
-                    <li><a href="lowest">Price Lowest</a></li>
+                
+               	    <li><a href="{{ route('category.lowest', $category_DB[0]->category_id) }}">Price Lowest</a></li>
                     <li><a href="highest"> Price Highest</a></li>
                
                 </ul>
