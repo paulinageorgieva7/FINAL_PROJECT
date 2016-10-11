@@ -9,11 +9,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	
-	<link href="css/app.css" rel="stylesheet">
-	<link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
-	<link href="css/slider.css" rel="stylesheet" type="text/css" media="all"/>
-	<link href="css/global.css" rel="stylesheet" type="text/css" media="all"/>
-	<link href="css/easy-responsive-tabs.css" rel="stylesheet" type="text/css" media="all"/>
+	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" media="all"/>
+	<link href="{{ asset('css/slider.css') }}" rel="stylesheet" type="text/css" media="all"/>
+	<link href="{{ asset('css/global.css') }}" rel="stylesheet" type="text/css" media="all"/>
+	<link href="{{ asset('css/easy-responsive-tabs.css') }}" rel="stylesheet" type="text/css" media="all"/>
 	
 	<script>
         window.Laravel = <?php echo json_encode([
@@ -21,11 +21,11 @@
         ]); ?>
     </script>
 	
-	<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script> 
-	<script type="text/javascript" src="js/move-top.js"></script>
-	<script type="text/javascript" src="js/easing.js"></script>
-	<script type="text/javascript" src="js/startstop-slider.js"></script>
-	<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
+	<script type="text/javascript" src="{{ asset('js/jquery-1.7.2.min.js') }}"></script> 
+	<script type="text/javascript" src="{{ asset('js/move-top.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/easing.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/startstop-slider.js') }}"></script>
+	<script src="{{ asset('js/easyResponsiveTabs.js') }}" type="text/javascript"></script>
 
 </head>
 <body>
@@ -72,13 +72,16 @@
 
 		<div class="header_top">
 			<div class="logo">
-				<a href='index'><img src="images/logo.png" alt="" /></a>
+				<a href='index'><img src="{{ asset('images/logo.png') }}" alt="" /></a>
 			</div>
 			  <div class="cart">
-			  	   <p>Welcome to our Online Store! <span>Cart:</span><div id="dd" class="wrapper-dropdown-2"> 0 item(s) - $0.00
-			  	   	<ul class="dropdown">
-							<li>you have no items in your Shopping cart</li>
-					</ul></div></p>
+			  	@if (!Auth::user())
+			  	    <p>Welcome to our Online Store!
+			  	@else 
+			  		<p>Welcome to our Online Store! <span><a href="{{ url('cart') }}">Cart</a></span></p>
+			  		
+			  	@endif
+			  	   	
 			  </div>
 			  
 			  <script type="text/javascript">
@@ -141,7 +144,7 @@
 	     		<form role="form" method="POST" action="{{ url('/search') }}" >
 	     		 {{ csrf_field() }}
 	     		 
-	     			<input type="text" name="search" placeholder="Search" value="{{ $query }}" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+	     			<input type="text" name="search" placeholder="Search" value="{{ isset($query) ? $query : '' }}">
 	     			<input type="submit" value="">
 	     		</form>
 	     	</div>
@@ -157,7 +160,7 @@
 			                    <div id="mover">
 			                    	<div id="slide-1" class="slide">			                    
 									 <div class="slider-img">
-									     <a href="preview.php"><img src="images/slide-1-image.png" alt="learn more" /></a>									    
+									     <a href="preview.php"><img src="{{ asset('images/slide-1-image.png') }}" alt="learn more" /></a>									    
 									  </div>
 						             	<div class="slider-text">
 		                                 <h1>Clearance<br><span>SALE</span></h1>
@@ -179,13 +182,13 @@
 							             <a href="preview.php" class="button">Shop Now</a>
 					                   </div>		
 						             	 <div class="slider-img">
-									     <a href="preview.php"><img src="images/slide-3-image.jpg" alt="learn more" /></a>
+									     <a href="preview.php"><img src="{{ asset('images/slide-3-image.jpg') }}" alt="learn more" /></a>
 									  </div>						             					                 
 									  <div class="clear"></div>				
 				                  </div>
 				                  <div class="slide">						             	
 					                  <div class="slider-img">
-									     <a href="preview.php"><img src="images/slide-2-image.jpg" alt="learn more" /></a>
+									     <a href="preview.php"><img src="{{ asset('images/slide-2-image.jpg') }}" alt="learn more" /></a>
 									  </div>
 									  <div class="slider-text">
 		                                 <h1>Clearance<br><span>SALE</span></h1>
@@ -213,6 +216,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="js/app.js"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

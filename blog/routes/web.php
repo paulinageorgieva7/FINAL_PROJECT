@@ -44,3 +44,14 @@
 	    'as'   => 'queries.search',
 	]);
 	
+	Route::post('/cart/add', array(
+			'uses'   => 'CartController@addCart',
+			'as'     => 'cart.add'
+	));
+	
+	Route::get('/cart', 'CartController@showCart');
+	
+	Route::get('/cart/delete/{cart_id}', array(
+			'uses'   => 'CartController@deleteCart',
+			'as'     => 'cart.delete'
+	));

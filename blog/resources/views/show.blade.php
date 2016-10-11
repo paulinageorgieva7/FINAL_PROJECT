@@ -39,7 +39,7 @@ $category = Session::get('category');
 
 				<div class="grid_1_of_4 images_1_of_4">
 				
-					 <a href="{{ url('product', $product->product_id) }}"><img src="images/{{ $product->product_image }}" alt="{{ $product->product_name }}" /></a>
+					 <a href="{{ url('product', $product->product_id) }}"><img src="http://localhost/workspace/Final_Project/blog/public/images/{{ $product->product_image }}" alt="{{ $product->product_name }}" /></a>
 					 <h2>{{ $product->product_name }}</h2>
 						<div class="price-details">
 				       		<div class="price-number">
@@ -52,7 +52,7 @@ $category = Session::get('category');
 								@endif
 					   		</div>
 					       	<div class="add-cart">								
-								<h4><a href="preview.php">Add to Cart</a></h4>
+								<h4><a href="{{ url('product', $product->product_id) }}">Add to Cart</a></h4>
 							</div>
 							<div class="clear"></div>
 						</div>			 

@@ -21,15 +21,11 @@ class Product extends Model
 	
 	
  	public function category() {
-        return $this->hasOne('App\Category', 'categosr_id');
+        return $this->hasOne('App\Category', 'category_id');
     }
     
     public function brand() {
     	return $this->belongsTo('App\Brand');
-    }
-    
-    public static function ProductLocatedAt($product_name) {
-    	return static::where(compact('product_name'))->firstOrFail();
     }
     
 }
