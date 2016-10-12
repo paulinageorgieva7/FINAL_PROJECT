@@ -24,7 +24,7 @@ class CreateProductTable extends Migration
             $table->integer('brand_id')->unsigned();
             $table->foreign('brand_id')->references('brand_id')->on('brand');
             $table->text('product_desc');
-            $table->binary('product_image');
+            $table->string('product_image');
             $table->timestamps();
         });
     }

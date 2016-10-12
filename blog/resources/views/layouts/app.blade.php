@@ -20,7 +20,7 @@
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
-	
+	<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/jquery-1.7.2.min.js') }}"></script> 
 	<script type="text/javascript" src="{{ asset('js/move-top.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/easing.js') }}"></script>
@@ -215,7 +215,5 @@
 		@extends('layouts.footer')
     </div>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
