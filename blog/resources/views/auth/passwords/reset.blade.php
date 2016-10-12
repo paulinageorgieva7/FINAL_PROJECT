@@ -1,3 +1,8 @@
+<?php  
+$mainCategory = Session::get('mainCategory');
+$category = Session::get('category')
+?> 
+
 @extends('layouts.app')
 
 @section('content')
