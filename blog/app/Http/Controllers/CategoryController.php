@@ -16,7 +16,16 @@ class CategoryController extends Controller
         $category = DB::table('category')->whereNotNull('main_category')->get();
         $session = $request->session()->put('mainCategory', $mainCategory); 
         $session = $request->session()->put('category', $category);
-        return view('layouts.app', ['mainCategory' => $mainCategory, 'category' => $category]);
+        
+        $slider = DB::table('product')
+        	->whereNotNull('reduced_price')
+        	->limit(3)
+        	->get();
+
+        return view('layouts.app', ['mainCategory' => $mainCategory, 
+        							'category' => $category,
+        							'slider' => $slider
+      								]);
         
     }
     

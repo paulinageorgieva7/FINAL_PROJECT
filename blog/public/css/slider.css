@@ -4,7 +4,7 @@
 /* 	border:1px solid #EEE; */
 	height: 100%;
     overflow: hidden;
-	position: relative; 
+    position: relative; 
     margin:0px 0; 
  }								  
    /* DEFAULT is for three panels in width, adjust as needed
@@ -14,11 +14,12 @@
 	position: relative; 
 }
 .slide { 
-	    padding:24px 25px; 
-	    width:33%; 
-	    float: left; 
-	    position: relative; 
+	padding:24px 25px; 
+	width: 33%; 
+	float: left; 
+	position: relative; 
  }
+
  .slider-text{
  	float:left;
  	width:47%;
@@ -27,7 +28,7 @@
  }
  .slider-img{
  	float:left;
- 	width:42%;
+	
  }
 .slide h1{ 
 	   font-size:2.5em; 
@@ -106,6 +107,8 @@
     -ms-transform:scale(1.05);
     -o-transform:scale(1.05);
     transform:scale(1.05);
+    text-decoration: none;
+    color: #fff;
 }
 .button-icon-download{
 	margin-left:15px;
@@ -143,6 +146,6 @@
 		padding:0 1% 0 0;
 	}
 	.slider-img{
-		width:30%;
+		height:30%;
 	}
 }
