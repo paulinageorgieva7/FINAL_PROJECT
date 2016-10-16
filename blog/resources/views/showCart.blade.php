@@ -3,7 +3,10 @@
 
 <?php  
 $mainCategory = Session::get('mainCategory');
-$category = Session::get('category')
+$category = Session::get('category');
+$slider = Session::get('slider');
+/* $count = Session::get('count');
+$cart_total = Session::get('cart_total'); */
 ?> 
 
  <div class="main">
@@ -16,11 +19,11 @@ $category = Session::get('category')
     		<div class="section group">
 				<div class="cont-desc span_1_of_2">
 				  <div class="product-details">				
-						<div class="grid images_3_of_2">
+					<div class="grid images_3_of_2">
 						<div id="container">
 						   <div id="products_example">
 							   <div id="products">								
-									<img src="http://localhost/workspace/Final_Project/blog/public/images/{{ $product->product_image }}" alt="{{ $product->product_name }}" 
+									<img src= '{{ url("images/$product->product_image") }}' alt="{{ $product->product_name }}" 
 										width="200px" />					
 								</div>
 							</div>
@@ -51,9 +54,15 @@ $category = Session::get('category')
 	 				<hr style="border-width: 3px">
  				
  				@endforeach		
- 			
- 				<p style="font-size: 1.5em; text-align:center; padding-right: 220px">Order: <span style="color: #CD1F25">$ {{ $cart_total }}</span></p>
  				
+ 				@if ($count == 0)
+ 					<p style="font-size: 1.5em; text-align:center;">You have no items in your cart! </p>
+ 				@else
+	 				<p style="font-size: 1.5em; text-align:center; padding-right: 220px">Order: <span style="color: #CD1F25">$ {{ $cart_total }}</span></p>
+	 				<div class="add-cart">	
+	 					<h4 style="margin-right: 90px"><a href="{{ url('/order') }}">Order</a></h4>
+	 				</div>
+				@endif
  			</div>
  		</div>
     </div>

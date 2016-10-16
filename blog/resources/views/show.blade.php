@@ -1,6 +1,9 @@
 <?php  
 $mainCategory = Session::get('mainCategory');
 $category = Session::get('category');
+$slider = Session::get('slider');
+/* $count = Session::get('count');
+$cart_total = Session::get('cart_total'); */
 ?> 
 
 @extends('layouts.app')
@@ -39,7 +42,7 @@ $category = Session::get('category');
 
 				<div class="grid_1_of_4 images_1_of_4">
 				
-					 <a href="{{ url('product', $product->product_id) }}"><img src="http://localhost/workspace/Final_Project/blog/public/images/{{ $product->product_image }}" alt="{{ $product->product_name }}" /></a>
+					 <a href="{{ url('product', $product->product_id) }}"><img src= '{{ url("images/$product->product_image") }}' /></a>
 					 <h2>{{ $product->product_name }}</h2>
 						<div class="price-details">
 				       		<div class="price-number">

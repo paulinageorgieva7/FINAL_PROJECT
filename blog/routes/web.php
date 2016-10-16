@@ -15,10 +15,6 @@
 		return view('index');
 	});
 	
-	Route::get('/show', function () {
-		return view('show');
-	});
-	
 	Auth::routes();
 	
 	Route::get('/home', 'HomeController@index');
@@ -49,9 +45,18 @@
 			'as'     => 'cart.add'
 	));
 	
+/* 	Route::get('/', 'CartController@cartInfo'); */
+	
 	Route::get('/cart', 'CartController@showCart');
 	
 	Route::get('/cart/delete/{cart_id}', array(
 			'uses'   => 'CartController@deleteCart',
 			'as'     => 'cart.delete'
 	));
+	
+	Route::get('/order', 'OrderController@index');
+	
+	Route::post('/order', 'OrderController@postOrder');
+	
+	Route::get('/history', 'OrderController@showHistory');
+	

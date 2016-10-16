@@ -14,14 +14,16 @@ class CategoryController extends Controller
     {
 	 	$mainCategory = DB::table('category')->whereNull('main_category')->get();
         $category = DB::table('category')->whereNotNull('main_category')->get();
-        $session = $request->session()->put('mainCategory', $mainCategory); 
-        $session = $request->session()->put('category', $category);
         
         $slider = DB::table('product')
-        	->whereNotNull('reduced_price')
-        	->limit(3)
-        	->get();
-
+        ->whereNotNull('reduced_price')
+        ->limit(3)
+        ->get();
+        
+        $session = $request->session()->put('mainCategory', $mainCategory); 
+        $session = $request->session()->put('category', $category);
+        $session = $request->session()->put('slider', $slider);
+        
         return view('layouts.app', ['mainCategory' => $mainCategory, 
         							'category' => $category,
         							'slider' => $slider

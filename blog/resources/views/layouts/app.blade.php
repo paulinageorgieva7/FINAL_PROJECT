@@ -72,13 +72,16 @@
 
 		<div class="header_top">
 			<div class="logo">
-				<a href='index'><img src="{{ asset('images/logo.png') }}" alt="" /></a>
+				<a href="{{ url('/') }}"><img src="{{ asset('images/logo.png') }}" alt="" /></a>
 			</div>
 			  <div class="cart">
 			  	@if (!Auth::user())
 			  	    <p>Welcome to our Online Store!
 			  	@else 
-			  		<p>Welcome to our Online Store! <span><a href="{{ url('cart') }}">Cart</a></span></p>
+			  		<p>Welcome to our Online Store! 
+			  			<span><a href="{{ url('cart') }}">Cart</a></span></p>
+			  		<br>
+			  		<p><a href="{{ url('history') }}">Order History</a></p>
 			  		
 			  	@endif
 			  	   	
@@ -163,12 +166,12 @@
 			                   
 			                    	<div id="slide-1" class="slide">			                    
 									 <div class="slider-img">
-									     <a href="{{ url('product', $slider->product_id) }}"><img src="http://localhost/workspace/Final_Project/blog/public/images/{{ $slider->product_image }}" alt="{{ $slider->product_name }}" height="400px"/></a>									    
+									     <a href="{{ url('product', $slider->product_id) }}"><img src= '{{ url("images/$slider->product_image") }}' height="400px"/></a>									    
 									  </div>
 						              <div class="slider-text">
 		                                 <h1>Clearance<br><span>SALE</span></h1>
-		                                 <p style="text-decoration: line-through; color: #CD1F25; font-size: 1.5em"><span style="color: #999;">{{ $slider->price }}</span></p>
-		                                 <h2>{{ $slider->reduced_price }}</h2>
+		                                 <p style="text-decoration: line-through; color: #CD1F25; font-size: 1.5em"><span style="color: #999;">${{ $slider->price }}</span></p>
+		                                 <h2>${{ $slider->reduced_price }}</h2>
 									  	 <div class="features_list">
 									   	 <h4>Get to Know More About Our Memorable Services Lorem Ipsum is simply dummy text</h4>							               
 							           </div>
@@ -190,12 +193,11 @@
 		</div>
 		
    </div>
-	     
+</div>	     
         @yield('content')
  
    
 		@extends('layouts.footer')
-    </div>
-
+   
 </body>
 </html>

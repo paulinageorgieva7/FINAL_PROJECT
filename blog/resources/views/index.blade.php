@@ -3,7 +3,7 @@
 
 <?php  
 $mainCategory = Session::get('mainCategory');
-$category = Session::get('category')
+$category = Session::get('category');
 ?> 
 
 
