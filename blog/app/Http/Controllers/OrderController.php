@@ -81,7 +81,7 @@ class OrderController extends Controller
 	
 		$success = true;
 		
-		return view('orderHistory', compact('success'));
+		return redirect('history');
 	
 	}
 	
@@ -105,7 +105,6 @@ class OrderController extends Controller
 			->leftJoin('orders', 'order_product.order_id', '=', 'orders.order_id')
 			->get();
 		
-
 		return view('orderHistory')
 				->with('order_products', $order_products)
 				->with('orders', $orders);
