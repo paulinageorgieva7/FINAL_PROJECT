@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Input;
 
 class OrderController extends Controller
 {
+
 	public function index()
 	{
 		$user_id = Auth::user()->id;
@@ -31,8 +32,6 @@ class OrderController extends Controller
 				'zip'        => 'required|max:11|min:4',
 		]);
 	
-		
-		// If error occurs, display it
 		if ($validator->fails()) {
 			return redirect('/cart')
 			->withErrors($validator)
@@ -95,18 +94,17 @@ class OrderController extends Controller
 		
 		$orders = DB::table('orders')
 			->where('user_id', '=', $user_id)			
-			->get();
-	
+			->paginate(10);
 		
-			
-		$order_products = DB::table('order_product')
-			->where('user_id', '=', $user_id)
-			->join('product', 'product.product_id', '=', 'order_product.product_id')
-			->leftJoin('orders', 'order_product.order_id', '=', 'orders.order_id')
-			->get();
-		
-		return view('orderHistory')
-				->with('order_products', $order_products)
+		foreach ($orders as &$order)	{
+			$order->products = DB::table('order_product')
+				->join('product', 'product.product_id', '=', 'order_product.product_id')
+				->where('order_id', '=', $order->order_id)
+				->orderBy('order_product_id', 'desc')
+				->get();
+		}
+				
+		return view('orderHistory')				
 				->with('orders', $orders);
 	}
 	

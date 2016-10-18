@@ -17,12 +17,8 @@ class SearchController extends Controller
 		
 		$product = DB::table('product')
 			->where('product_name', 'LIKE', '%' . $query . '%')
-			->get();
+			->paginate(12);
 		
-		/* if ($search->isEmpty()) {
-			flash()->info('Not Found', 'No search results found.');
-			return redirect('/');
-		} */
 		return view('show', compact('query', 'category_DB', 'product'));
 	}
 }

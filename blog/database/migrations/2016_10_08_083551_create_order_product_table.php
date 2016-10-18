@@ -21,9 +21,9 @@ class CreateOrderProductTable extends Migration
             $table->foreign('product_id')->references('product_id')->on('product');
             $table->integer('qty');
             $table->decimal('price', 10, 2);
-            $table->decimal('reduced_price', 10, 2);
+            $table->decimal('reduced_price', 10, 2)->unsigned()->nullable();
             $table->decimal('total', 10, 2);
-            $table->decimal('total_reduced', 10, 2);
+            $table->decimal('total_reduced', 10, 2)->unsigned()->nullable();
             $table->timestamps();
         });
     }

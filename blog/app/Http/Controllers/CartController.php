@@ -56,7 +56,7 @@ class CartController extends Controller
 		
 		$carts = DB::table('carts')->get();
 
-		return redirect()->back();		
+		return redirect('cart');		
 	}
 	
 	public function showCart() {

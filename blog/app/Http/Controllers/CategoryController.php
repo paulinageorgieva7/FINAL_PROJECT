@@ -24,7 +24,7 @@ class CategoryController extends Controller
         $session = $request->session()->put('category', $category);
         $session = $request->session()->put('slider', $slider);
         
-        return view('layouts.app', ['mainCategory' => $mainCategory, 
+        return view('index', ['mainCategory' => $mainCategory, 
         							'category' => $category,
         							'slider' => $slider
       								]);
@@ -33,7 +33,7 @@ class CategoryController extends Controller
     
     public function show($category_id)
     {
-    	$product = DB::table('product')->where('category_id', '=', $category_id)->get();
+    	$product = DB::table('product')->where('category_id', '=', $category_id)->paginate(12);
     	
     	$category_id_DB = DB::table('category')->where('category_id', '=', $category_id)->get();
     	

@@ -33,7 +33,6 @@
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
- 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
@@ -69,62 +68,58 @@
 
   <div class="wrap">
 	<div class="header">
-
-		<div class="header_top">
-			<div class="logo">
-				<a href="{{ url('/') }}"><img src="{{ asset('images/logo.png') }}" alt="" /></a>
-			</div>
-			  <div class="cart">
-			  	@if (!Auth::user())
-			  	    <p>Welcome to our Online Store!
-			  	@else 
-			  		<p>Welcome to our Online Store! 
-			  			<span><a href="{{ url('cart') }}">Cart</a></span></p>
-			  		<br>
-			  		<p><a href="{{ url('history') }}">Order History</a></p>
-			  		
-			  	@endif
-			  	   	
-			  </div>
+	 <div class="header_top">
+		 <div class="logo">
+			<a href="{{ url('/') }}"><img src="{{ asset('images/logo.png') }}" alt="" /></a>
+		 </div>
+		  <div class="cart">
+		  	@if (!Auth::user())
+		  	    <p>Welcome to our Online Store!
+		  	@else 
+		  		<p>Welcome to our Online Store! 
+		  			<span><a href="{{ url('cart') }}">Cart</a></span></p>
+		  		<br>
+		  		<p><a href="{{ url('history') }}">Order History</a></p>
+		  		
+		  	@endif
+		  	   	
+		  </div>
 			  
-			  <script type="text/javascript">
-			function DropDown(el) {
-				this.dd = el;
-				this.initEvents();
+		  <script type="text/javascript">
+		function DropDown(el) {
+			this.dd = el;
+			this.initEvents();
+		}
+		DropDown.prototype = {
+			initEvents : function() {
+				var obj = this;
+
+				obj.dd.on('click', function(event){
+					$(this).toggleClass('active');
+					event.stopPropagation();
+				});	
 			}
-			DropDown.prototype = {
-				initEvents : function() {
-					var obj = this;
+		}
 
-					obj.dd.on('click', function(event){
-						$(this).toggleClass('active');
-						event.stopPropagation();
-					});	
-				}
-			}
+		$(function() {
 
-			$(function() {
+			var dd = new DropDown( $('#dd') );
 
-				var dd = new DropDown( $('#dd') );
-
-				$(document).click(function() {
-					// all dropdowns
-					$('.wrapper-dropdown-2').removeClass('active');
-				});
-
+			$(document).click(function() {
+				// all dropdowns
+				$('.wrapper-dropdown-2').removeClass('active');
 			});
 
-		</script>
-	 <div class="clear"></div>
+		});
+
+	</script>
+	<div class="clear"></div>
   </div>
 	<div class="header_bottom">
 	     	<div class="menu">
-	     		<ul>   	
-	     		
-	     		@foreach ($mainCategory as $mc)
-	
-	     			<li>
-	     			
+	     		<ul>
+				@foreach ($mainCategory as $mc)
+	     			<li>	
 	     				<div class="dropdown">
 						  <a class="dropbtn" href=#>{{ $mc->category}}</a></button>
 						  <div class="dropdown-content">
@@ -139,7 +134,6 @@
 					</li>
 				@endforeach
 
-
 			    	<div class="clear"></div>
      			</ul>
 	     	</div>
@@ -151,52 +145,11 @@
 	     			<input type="submit" value="">
 	     		</form>
 	     	</div>
-	     	<div class="clear"></div>
-	     </div>	
-	     
-	            
-        	<div class="header_slide">
-			 
-					 <div class="header_bottom_right">					 
-					 	 <div class="slider">		
-					 				     
-							 <div id="slider">
-							 	 @foreach ($slider as $slider)
-			                    <div id="mover">
-			                   
-			                    	<div id="slide-1" class="slide">			                    
-									 <div class="slider-img">
-									     <a href="{{ url('product', $slider->product_id) }}"><img src= '{{ url("images/$slider->product_image") }}' height="400px"/></a>									    
-									  </div>
-						              <div class="slider-text">
-		                                 <h1>Clearance<br><span>SALE</span></h1>
-		                                 <p style="text-decoration: line-through; color: #CD1F25; font-size: 1.5em"><span style="color: #999;">${{ $slider->price }}</span></p>
-		                                 <h2>${{ $slider->reduced_price }}</h2>
-									  	 <div class="features_list">
-									   	 <h4>Get to Know More About Our Memorable Services Lorem Ipsum is simply dummy text</h4>							               
-							           </div>
-							           <a href="{{ url('product', $slider->product_id) }}" class="button">Shop Now</a>
-					                  </div>				                  	              
-									  <div class="clear"></div>	
-									   		
-				                  </div>	
-				                  
-						           @endforeach	  
-				                  									
-			                 </div>		
-			                
-		                </div>
-					 <div class="clear"></div>					       
-		         </div>
-		      </div>
-		   <div class="clear"></div>
-		</div>
-		
+	     <div class="clear"></div>
+	   </div>			
    </div>
 </div>	     
-        @yield('content')
- 
-   
+        @yield('content')  
 		@extends('layouts.footer')
    
 </body>
