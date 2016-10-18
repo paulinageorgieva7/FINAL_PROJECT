@@ -12,10 +12,11 @@ $cart_total = Session::get('cart_total'); */
  <div class="main">
     <div class="content">
 	    <h2>Order History</h2>	
-	    @foreach ($orders as $order)
+	    
     	<div class="content_top">   	
     		<div class="clear"></div>
-    			<div class="section group">   			
+    		@foreach ($orders as $order) 
+    			<div class="section group"> 		
 					<div class="cont-desc span_1_of_2">
 					  <div class="product-details">				
 						<div class="grid images_3_of_2">

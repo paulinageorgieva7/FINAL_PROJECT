@@ -61,26 +61,87 @@ $cart_total = Session::get('cart_total'); */
 	                                <option value="5">5</option>
 	                            </select>
                             	<p><b>Available: {{ $product->product_qty }}</b></p>
-                            	<button class="btn btn-default waves-effect waves-light" style="background-color: #CD1F25; color:#fff">Add to Cart</button>
-		                 
+                            	<button class="btn btn-default waves-effect waves-light" style="background-color: #CD1F25; color:#fff">Add to Cart</button>		                 
 		                    </form>
 	                    @endif							
 					</div>				
 					<div class="clear"></div>
-				</div>
-				 
-				</div>
-				
-			@endforeach	
-		
+				</div>				 
+				</div>				
 				<div class="clear"></div>
-			 	</div>
- 				 
+				
+				@endforeach
+ 				
  				</div>
  			</div>
  		</div>
+
+				<h2 style="font-size: 1.3em; color: black">COMMENTS</h2>
+				@foreach($comments as $comment)				
+					<div class="content_top">   	  		
+			    			<div class="section group">   			
+								<div class="cont-desc span_1_of_2">					  		
+									<div class="grid images_3_of_2">
+										<div id="container">	
+																	   
+											   <div id="products">								
+													<p>Date: {{ $comment->created_at }}</p>
+													<p>Post By: {{ $comment->name }}</p>																									
+												</div>					
+										</div>
+										
+									</div>					
+									<div class="desc span_3_of_2">					
+										<h4>{{ $comment->comment }}</h4>								
+									</div>							
+								</div>			
+							</div>								
+						 </div>							
+			 		
+		 		@endforeach
+		 		
+		 		{!! $comments->links() !!}
+		 		
+		 		<br>
+			 @if (Auth::user())
+			 
+			 	@if($isComment) 
+			 		<h4>You already left a comment on that product</h4>
+			 	@else	
+			 		 	
+			 	<div class="container" >
+				    <div class="row">
+				        <div class="col-md-8 col-md-offset-2">
+				            <div class="panel panel-default">
+				                <div class="panel-heading">Leave Comment</div>
+				                <div class="panel-body">
+				                    <form class="form-horizontal" role="form" method="POST">
+				                        {{ csrf_field() }}
+				                        <div class="col-md-6">
+				                        	<textarea rows="4" cols="50" id="comment" class="form-control" 
+				                        		placeholder="Leave your comment here..." name="comment" required autofocus> 
+				                        	</textarea>   
+				                        	@if ($errors->has('comment'))
+                                   				<span class="help-block">
+                                       				<strong>{{ $errors->first('comment') }}</strong>
+                                    			</span>
+                               				@endif                       
+				                       	<br>
+				                       	</div>         	
+				                      	<div class="form-group">
+				                           	<div class="col-md-6 col-md-offset-4">
+				                           		<button type="submit" class="btn btn-primary">Leave Comment</button>
+				                            </div>
+				                       	</div>
+				                    </form>					                   			                		
+				                </div>
+				            </div>
+				        </div>
+				    </div>
+				</div>
+			 @endif	
+			@endif	
+		</div>	
     </div>
 </div>
-
-
 @endsection

@@ -23,6 +23,8 @@
 	
 	Route::get('category/{category_id}', 'CategoryController@show');
 	
+	Route::post('product/{product_id}', 'ProductController@comment');
+	
 	Route::get('product/{product_id}', 'ProductController@show');
 	
     Route::get('category/{category_id}/lowest', [
@@ -59,4 +61,5 @@
 	Route::post('/order', 'OrderController@postOrder');
 	
 	Route::get('/history', 'OrderController@showHistory');
+	
 	

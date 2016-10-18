@@ -33,7 +33,10 @@ class CategoryController extends Controller
     
     public function show($category_id)
     {
-    	$product = DB::table('product')->where('category_id', '=', $category_id)->paginate(12);
+    	$product = DB::table('product')
+    		->where('category_id', '=', $category_id)
+    		->orderBy('product_id', 'desc')
+    		->paginate(12);
     	
     	$category_id_DB = DB::table('category')->where('category_id', '=', $category_id)->get();
     	
@@ -46,7 +49,7 @@ class CategoryController extends Controller
     	$product = DB::table('product')
     		->where('category_id', '=', $category_id)
     		->orderBy('price', 'asc')
-    		->get();
+    		->paginate(12);
     	
     	$category_id_DB = DB::table('category')->where('category_id', '=', $category_id)->get();
     	
@@ -58,7 +61,7 @@ class CategoryController extends Controller
     	$product = DB::table('product')
     		->where('category_id', '=', $category_id)
     		->orderBy('price', 'desc')
-    		->get();
+    		->paginate(12);
 		
     	$category_id_DB = DB::table('category')->where('category_id', '=', $category_id)->get();
     		 

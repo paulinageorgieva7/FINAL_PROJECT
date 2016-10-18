@@ -44,7 +44,11 @@ class OrderController extends Controller
 		$city = Input::get('city');
 		$zip = Input::get('zip');
 		
-		$user_id = Auth::user()->id;
+		if (isset(Auth::user()->id)) {
+			$user_id = Auth::user()->id;
+		} else {
+			return redirect()->route('login');
+		}
 	
 		$cart_products = Cart::where('user_id', '=', $user_id)
 			->join('product', 'carts.product_id', '=', 'product.product_id')
@@ -77,8 +81,6 @@ class OrderController extends Controller
 		}
 		
 		Cart::where('user_id', '=', $user_id)->delete();
-	
-		$success = true;
 		
 		return redirect('history');
 	
@@ -93,14 +95,14 @@ class OrderController extends Controller
 		}
 		
 		$orders = DB::table('orders')
-			->where('user_id', '=', $user_id)			
+			->where('user_id', '=', $user_id)
+			->orderBy('order_id', 'desc')
 			->paginate(10);
 		
 		foreach ($orders as &$order)	{
 			$order->products = DB::table('order_product')
 				->join('product', 'product.product_id', '=', 'order_product.product_id')
 				->where('order_id', '=', $order->order_id)
-				->orderBy('order_product_id', 'desc')
 				->get();
 		}
 				
