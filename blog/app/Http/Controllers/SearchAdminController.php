@@ -24,7 +24,7 @@ class SearchAdminController extends SearchController
 		
 		$prodOperations = DB::table('product')
 								->where('product_name', 'LIKE', '%' . $query . '%')
-								->paginate(10);
+								->paginate(5);
 
 		return view('admin/productOperation/search', compact('query', 'categories', 'brands', 'prodOperations'));
 	}

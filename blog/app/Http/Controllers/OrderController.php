@@ -15,7 +15,11 @@ class OrderController extends Controller
 
 	public function index()
 	{
-		$user_id = Auth::user()->id;
+		if (isset(Auth::user()->id)) {
+			$user_id = Auth::user()->id;
+		} else {
+			return redirect()->route('login');
+		}
 		
 		$cart_total = Cart::with('total')->where('user_id', '=', $user_id)->sum('total');
 		
