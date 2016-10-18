@@ -3,26 +3,26 @@
 	This store is a fully functional e-commerce store with a full back-end, where admin can add, delete and edit products.
 
 	FUNCTIONALITY:
-	• Register users and Login
-	• Browse through products by category or search bar
-	• Search by specific product name
-	• Add and delete from your cart
-	• Admin features
-	• Post products, and control quantity.
+	â€¢ Register users and Login
+	â€¢ Browse through products by category or search bar
+	â€¢ Search by specific product name
+	â€¢ Add and delete from your cart
+	â€¢ Admin features
+	â€¢ Post products, and control quantity.
 
 	CODE USED:
-	• Laravel 5.3
-	• PHP/mySQL
-	• Javasrcipt/jQuery
-	• HTML/CSS/ LESS
-	• Bootstrap
+	â€¢ Laravel 5.3
+	â€¢ PHP/mySQL
+	â€¢ Javasrcipt/jQuery
+	â€¢ HTML/CSS/ LESS
+	â€¢ Bootstrap
 
 	Things to change when downloaded
-	• Go into .ENV file and change Database AND Email credentials
-	• Go to config/mail.php, and change email credentials
+	â€¢ Go into .ENV file and change Database AND Email credentials
+	â€¢ Go to config/mail.php, and change email credentials
 
 	How to set this project up
-	• Create a database, and migrate the tables
-	• Add credentials to the .env file including email details
-	• To make someone admin, go into users table and insert a 1 under admin column
+	â€¢ Create a database, and migrate the tables
+	â€¢ Add credentials to the .env file including email details
+	â€¢ To make someone admin, go into users table and insert a 1 under admin column
 

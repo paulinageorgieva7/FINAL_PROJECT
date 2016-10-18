@@ -59,14 +59,15 @@ class CartController extends Controller
 		return redirect('cart');		
 	}
 	
-	public function showCart() {
 	
-		if (isset(Auth::user()->id)) {
+	public function showCart() 
+	{
 			$user_id = Auth::user()->id;
-		} else {
-			return redirect()->route('login');
-		}
-	
+		if (isset(Auth::user()->id)) {
+ 			$user_id = Auth::user()->id;
+ 		} else {
+ 			return redirect()->route('login');
+ 		}	
 		$cart_product = Cart::where('user_id', '=', $user_id)
 			->join('product', 'carts.product_id', '=', 'product.product_id')
 			->get();

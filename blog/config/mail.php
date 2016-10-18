@@ -30,7 +30,6 @@ return [
     */
 
     'host' => env('MAIL_HOST', 'smtp.gmail.com'),
-
     /*
     |--------------------------------------------------------------------------
     | SMTP Host Port
@@ -109,7 +108,7 @@ return [
     | been provided here, which will work well on most of your systems.
     |
     */
+    'sendmail' => '/usr/sbin/sendmail -bs',
 
-    'sendmail' => '\"C:\xampp\sendmail\sendmail.exe\" -t',
 
 ];
