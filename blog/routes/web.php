@@ -42,9 +42,19 @@
 	    'as'   => 'queries.search',
 	]);
 	
+	Route::get('/search', [
+			'uses' => '\App\Http\Controllers\SearchController@search',
+			'as'   => 'queries.search',
+	]);
+	
 	Route::post('/admin/productOperation/search', 'SearchAdminController@search');
 	
 	Route::post('/cart/add', array(
+			'uses'   => 'CartController@addCart',
+			'as'     => 'cart.add'
+	));
+	
+	Route::get('/cart/add', array(
 			'uses'   => 'CartController@addCart',
 			'as'     => 'cart.add'
 	));

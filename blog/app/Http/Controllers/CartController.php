@@ -61,7 +61,11 @@ class CartController extends Controller
 	
 	public function showCart() {
 	
-		$user_id = Auth::user()->id;
+		if (isset(Auth::user()->id)) {
+			$user_id = Auth::user()->id;
+		} else {
+			return redirect()->route('login');
+		}
 	
 		$cart_product = Cart::where('user_id', '=', $user_id)
 			->join('product', 'carts.product_id', '=', 'product.product_id')
