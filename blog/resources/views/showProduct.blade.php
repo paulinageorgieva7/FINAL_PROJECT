@@ -118,7 +118,7 @@ $cart_total = Session::get('cart_total'); */
 				                        {{ csrf_field() }}
 				                        <div class="col-md-6">
 				                        	<textarea rows="4" cols="50" id="comment" class="form-control" 
-				                        		placeholder="Leave your comment here..." name="comment" required autofocus> 
+				                        		placeholder="Leave your comment here..." name="comment"> 
 				                        	</textarea>   
 				                        	@if ($errors->has('comment'))
                                    				<span class="help-block">
