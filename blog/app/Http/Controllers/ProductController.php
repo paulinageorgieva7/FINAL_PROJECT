@@ -12,8 +12,7 @@ class ProductController extends Controller
 	public function show($product_id)
 	{
 		$product = DB::table('product')->where('product_id', '=', $product_id)->get();
-		return view('showProduct', ['product' => $product]);
-		 
+		return view('showProduct', ['product' => $product]);		 
 	}
 	
 	

@@ -3,7 +3,10 @@
 
 <?php  
 $mainCategory = Session::get('mainCategory');
-$category = Session::get('category')
+$category = Session::get('category');
+$slider = Session::get('slider');
+/* $count = Session::get('count');
+$cart_total = Session::get('cart_total'); */
 ?> 
 
  <div class="main">
@@ -22,8 +25,7 @@ $category = Session::get('category')
 						<div id="container">
 						   <div id="products_example">
 							   <div id="products">								
-									<img src='{{ url("images/$product->product_image") }}' alt='{{ url("images/$product->product_image") }}' />					
-								</div>
+									<img src= '{{ url("images/$product->product_image") }}' alt="{{ $product->product_name }}" />													</div>
 							</div>
 						</div>
 					</div>

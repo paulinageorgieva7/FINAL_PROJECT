@@ -41,8 +41,8 @@ class CartController extends Controller
 		if ($product_qty >= $qty) {
 			
 			$product = DB::table('product')
-			->where('product_id', $product_id)
-			->update(['product_qty' => $product_qty - $qty]);
+				->where('product_id', $product_id)
+				->update(['product_qty' => $product_qty - $qty]);
 		
 			Cart::create(
 				array (
@@ -56,7 +56,7 @@ class CartController extends Controller
 		
 		$carts = DB::table('carts')->get();
 
-		return redirect()->back();		
+		return redirect('cart');		
 	}
 	
 	public function showCart() {
@@ -64,12 +64,8 @@ class CartController extends Controller
 		$user_id = Auth::user()->id;
 	
 		$cart_product = Cart::where('user_id', '=', $user_id)
-
 			->join('product', 'carts.product_id', '=', 'product.product_id')
-
 			->get();
-		
-
 			
 		$cart_sum = Cart::where('user_id', '=', $user_id)
 			->selectRaw('sum(total) as sum_total')
@@ -120,4 +116,22 @@ class CartController extends Controller
 		
 		return redirect()->back();
 	}
+	
+/* 	public function cartInfo(Request $request)
+	{		
+		if (isset(Auth::user()->id)) {
+			$user_id = Auth::user()->id;
+		} else {
+			return redirect()->route('login');
+		}
+		
+		$count = Cart::where('user_id', '=', $user_id)->count();
+		
+		$cart_total = Cart::with('total')->where('user_id', '=', $user_id)->sum('total');
+		
+		$session = $request->session()->put('count', $count);
+		$session = $request->session()->put('cart_total', $cart_total);
+		
+		return view('layouts.app', compact('count', 'cart_total'));
+	} */
 }

@@ -15,10 +15,6 @@
 		return view('index');
 	});
 	
-	Route::get('/show', function () {
-		return view('show');
-	});
-	
 	Auth::routes();
 	
 	Route::get('/home', 'HomeController@index');
@@ -51,14 +47,21 @@
 			'as'     => 'cart.add'
 	));
 	
+/* 	Route::get('/', 'CartController@cartInfo'); */
+	
 	Route::get('/cart', 'CartController@showCart');
 	
 	Route::get('/cart/delete/{cart_id}', array(
 			'uses'   => 'CartController@deleteCart',
 			'as'     => 'cart.delete'
 	));
-
-	//Admin Login
+	
+	Route::get('/order', 'OrderController@index');
+	
+	Route::post('/order', 'OrderController@postOrder');
+	
+	Route::get('/history', 'OrderController@showHistory');
+		//Admin Login
 	Route::get('admin/login', 'AdminAuth\LoginController@showLoginForm');
 	Route::post('admin/login', 'AdminAuth\LoginController@login');
 	Route::post('admin/logout', 'AdminAuth\LoginController@logout');
@@ -76,5 +79,3 @@
 	Route::group(['middleware' => ['web']], function() {
 		Route::resource('admin/productOperation', 'ProductOperationController');
 	});
-
-	//Route::get('/admin/productOperation', 'ProductOperationController@show');
