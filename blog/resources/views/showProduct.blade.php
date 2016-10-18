@@ -106,7 +106,7 @@ $cart_total = Session::get('cart_total'); */
 			 @if (Auth::user())
 			 
 			 	@if($isComment) 
-			 		<h4>You already left a comment on that product</h4>
+			 		<h4>You already left a comment for this product</h4>
 			 	@else	
 			 		 	
 			 	<div class="container" >
