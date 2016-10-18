@@ -22,10 +22,10 @@ class SearchAdminController extends SearchController
 					->select('brand_id', 'brand_name')
 					->get();
 		
-		$products = DB::table('product')
+		$prodOperations = DB::table('product')
 								->where('product_name', 'LIKE', '%' . $query . '%')
-								->get();
+								->paginate(10);
 
-		return view('admin/productOperation/search', compact('query', 'categories', 'brands', 'products'));
+		return view('admin/productOperation/search', compact('query', 'categories', 'brands', 'prodOperations'));
 	}
 }

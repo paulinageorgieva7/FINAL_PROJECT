@@ -20,7 +20,7 @@ class ProductOperationController extends Controller
     {
         //show products
         $prodOperations = DB::table('product')
-        					->get();
+        					->paginate(10);
         $categories = DB::table('category')
         				->select('category_id', 'category')
 						->whereNotNull('main_category')

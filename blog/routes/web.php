@@ -48,9 +48,7 @@
 			'uses'   => 'CartController@addCart',
 			'as'     => 'cart.add'
 	));
-	
-/* 	Route::get('/', 'CartController@cartInfo'); */
-	
+		
 	Route::get('/cart', 'CartController@showCart');
 	
 	Route::get('/cart/delete/{cart_id}', array(
