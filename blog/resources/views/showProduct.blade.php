@@ -22,7 +22,7 @@ $category = Session::get('category')
 						<div id="container">
 						   <div id="products_example">
 							   <div id="products">								
-									<img src="http://localhost/workspace/Final_Project/blog/public/images/{{ $product->product_image }}" alt="{{ $product->product_name }}" />					
+									<img src='{{ url("images/$product->product_image") }}' alt='{{ url("images/$product->product_image") }}' />					
 								</div>
 							</div>
 						</div>
