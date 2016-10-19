@@ -1,5 +1,8 @@
 <?php
 
+use App\Notifications\AdminMakeUpdate;
+use App\User;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -68,7 +71,17 @@
 	Route::post('/order', 'OrderController@postOrder');
 	
 	Route::get('/history', 'OrderController@showHistory');
-		//Admin Login
+	
+	Route::get('/notification', function () {
+		
+		$users = User::getNotification();
+		
+		foreach ($users as $user) {
+			$user->notify(new AdminMakeUpdate($product));;
+		}
+	});
+	
+	//Admin Login
 	Route::get('admin/login', 'AdminAuth\LoginController@showLoginForm');
 	Route::post('admin/login', 'AdminAuth\LoginController@login');
 	Route::post('admin/logout', 'AdminAuth\LoginController@logout');
@@ -85,4 +98,11 @@
 	
 	Route::group(['middleware' => ['web']], function() {
 		Route::resource('admin/productOperation', 'ProductOperationController');
+		
+		Route::get('admin/login', 'AdminAuth\LoginController@showLoginForm');
+		Route::post('admin/login', 'AdminAuth\LoginController@login');
+		Route::post('admin/logout', 'AdminAuth\LoginController@logout');
 	});
+	
+	
+	

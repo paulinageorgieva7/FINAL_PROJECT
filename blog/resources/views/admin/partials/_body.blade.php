@@ -13,6 +13,9 @@
      	</form>
      	<ul class="list-group" style="margin: 0">
      		<li style="list-style-type: none">
+     			<a href="" class="btn btn-info pull-right">Send Email to Users</a>
+        	</li>
+     		<li style="list-style-type: none">
      			<a href="{{ route('productOperation.create') }}" class="btn btn-info pull-right">Create New Product</a>
         	</li>
         </ul>

@@ -8,6 +8,9 @@ use App\Http\Requests;
 use App\ProductOperation;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Product;
+use App\Mail\OrderShipped;
+use Illuminate\Support\Facades\Mail;
 
 class ProductOperationController extends Controller
 {
@@ -70,10 +73,10 @@ class ProductOperationController extends Controller
         $this->validate($request, [
         	'product_image' => 'required',
         	'product_name' => 'required',
-        	'brand_id' => 'required',
-        	'category_id' => 'required',
-        	'product_qty' => 'required',
-			'price' => 'required',
+        	'brand_id' => 'required|integer',
+        	'category_id' => 'required|integer',
+        	'product_qty' => 'required|integer',
+			'price' => 'required|numeric',
         	'product_desc' => 'required'
         ]);
         
@@ -148,8 +151,8 @@ class ProductOperationController extends Controller
     			'product_name' => 'required',
     			'brand_id' => 'required',
     			'category_id' => 'required',
-    			'product_qty' => 'required',
-    			'price' => 'required',
+    			'product_qty' => 'required|integer',
+    			'price' => 'required|numeric',
     			'product_desc' => 'required'
     	]);
     	    	
@@ -183,5 +186,13 @@ class ProductOperationController extends Controller
     		->delete();
     	
     	return redirect()->route('productOperation.index')->with('alert-success', 'Product has been saved!');
+    }
+    
+    public function sendEmail(Request $request, $product_id)
+    {
+    	$product = Product::findOrFail($product_id);
+    
+    	Mail::to($request->user())
+    	->later($when, new OrderShipped($product));
     }
 }

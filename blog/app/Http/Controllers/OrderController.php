@@ -37,7 +37,7 @@ class OrderController extends Controller
 		]);
 	
 		if ($validator->fails()) {
-			return redirect('/cart')
+			return redirect('order')
 			->withErrors($validator)
 			->withInput();
 		}
